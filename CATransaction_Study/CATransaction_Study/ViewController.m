@@ -102,7 +102,7 @@
 }
 
 - (IBAction)btnUseLessClick:(id)sender {
-    //显式事务无法在控件中应用
+    //显式事务无法在控件中应用,事务直接在runloop中提交了,所以看不到动画
     [CATransaction begin];
     [CATransaction setValue:[NSNumber numberWithFloat:4.0f]
                      forKey:kCATransactionAnimationDuration];//设定隐式事务处理时间

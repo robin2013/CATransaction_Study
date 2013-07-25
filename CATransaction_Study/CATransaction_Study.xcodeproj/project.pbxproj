@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		005B038B17A12CCC00B14956 /* guide_icons_0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005B038A17A12CCC00B14956 /* guide_icons_0@2x.png */; };
 		00CF8FA1179FACEA000BD269 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00CF8FA0179FACEA000BD269 /* UIKit.framework */; };
 		00CF8FA3179FACEA000BD269 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00CF8FA2179FACEA000BD269 /* Foundation.framework */; };
 		00CF8FA5179FACEA000BD269 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00CF8FA4179FACEA000BD269 /* CoreGraphics.framework */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		005B038A17A12CCC00B14956 /* guide_icons_0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guide_icons_0@2x.png"; sourceTree = "<group>"; };
 		00CF8F9D179FACEA000BD269 /* CATransaction_Study.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CATransaction_Study.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00CF8FA0179FACEA000BD269 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		00CF8FA2179FACEA000BD269 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -89,6 +91,7 @@
 		00CF8FA6179FACEA000BD269 /* CATransaction_Study */ = {
 			isa = PBXGroup;
 			children = (
+				005B038A17A12CCC00B14956 /* guide_icons_0@2x.png */,
 				00CF8FAF179FACEA000BD269 /* AppDelegate.h */,
 				00CF8FB0179FACEA000BD269 /* AppDelegate.m */,
 				00CF8FB8179FACEA000BD269 /* ViewController.h */,
@@ -171,6 +174,7 @@
 				00CF8FB7179FACEA000BD269 /* Default-568h@2x.png in Resources */,
 				00CF8FBD179FACEA000BD269 /* ViewController_iPhone.xib in Resources */,
 				00CF8FC0179FACEA000BD269 /* ViewController_iPad.xib in Resources */,
+				005B038B17A12CCC00B14956 /* guide_icons_0@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +318,7 @@
 				00CF8FC5179FACEA000BD269 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
