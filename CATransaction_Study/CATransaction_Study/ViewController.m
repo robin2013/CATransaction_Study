@@ -26,7 +26,7 @@
     [super viewDidLoad];
     layer = [CALayer layer];
     [layer setFrame:CGRectMake(100, 100, 120, 230)];
-
+    
     layer.backgroundColor = [UIColor redColor].CGColor;
     layer.borderColor = [UIColor blackColor].CGColor;
     layer.opacity = 1.0f;
@@ -46,33 +46,94 @@
     [CATransaction setDisableActions:_swich.on];
     corner +=10;
     layer.cornerRadius = corner;
+
 }
 
 
 - (IBAction)btnColorClick:(id)sender
 {
-    [CATransaction setDisableActions:_swich.on];
-    CGColorRef redColor = [UIColor redColor].CGColor, blueColor = [UIColor blueColor].CGColor;
-    layer.backgroundColor = (layer.backgroundColor == redColor) ? blueColor : redColor;
+    //[CATransaction setDisableActions:_swich.on];
+    [CATransaction begin];
+    [CATransaction setValue:(_swich.on?(id)kCFBooleanTrue:(id)kCFBooleanFalse) forKey:kCATransactionDisableActions];
+    [self setLayerBC];
+       [CATransaction commit];
+    
+    
 }
 - (IBAction)btnpostionClick:(id)sender
 {
-    [CATransaction setDisableActions:_swich.on];
-     layer.position = CGPointMake(layer.position.x +10, layer.position.y);
+    [CATransaction setValue:[NSNumber numberWithFloat:10.0f]
+                     forKey:kCATransactionAnimationDuration];//设定隐式事务处理时间
+    [CATransaction setDisableActions:_swich.on];//是否禁用事务动画
+    [self setLayerPosition];
 }
 - (IBAction)btnBoundClick:(id)sender
 {
-    [CATransaction setDisableActions:YES];
-    if (layer.bounds.size.width == layer.bounds.size.height)
-        layer.bounds = CGRectMake(layer.bounds.origin.x, layer.bounds.origin.y, layer.bounds.size.width + 100, layer.bounds.size.height);
-    else
-        layer.bounds = CGRectMake(layer.bounds.origin.x, layer.bounds.origin.y, layer.bounds.size.width - 100, layer.bounds.size.height);
+    //隐式事务
+    [CATransaction setDisableActions:_swich.on];
+    [self setLayerBound];
 }
 - (IBAction)btnOpacityClick:(id)sender
 {
-    [CATransaction setDisableActions:_swich.on];
-    layer.opacity = (layer.opacity == 1.0f) ? 0.5f : 1.0f;
+    //显示事务
+    [CATransaction begin];
+     [CATransaction setValue:(_swich.on?(id)kCFBooleanTrue:(id)kCFBooleanFalse) forKey:kCATransactionDisableActions];
+    [self setLayerOpcity];
+    [CATransaction commit];
+    
+}
+//事务嵌套
+- (IBAction)btnMixClick:(id)sender {
+    [CATransaction begin];
+    [CATransaction setValue:[NSNumber numberWithFloat:2.0f]
+                     forKey:kCATransactionAnimationDuration];//设定隐式事务处理时间
+    [self setLayerBound];
+    [CATransaction begin];
+    [CATransaction setValue:[NSNumber numberWithFloat:4.0f]
+                     forKey:kCATransactionAnimationDuration];//设定隐式事务处理时间
+    [self setLayerBC];
+    [CATransaction begin];
+    [CATransaction setValue:[NSNumber numberWithFloat:6.0f]
+                     forKey:kCATransactionAnimationDuration];//设定隐式事务处理时间
+    [self setLayerPosition];
+    [CATransaction commit];
+    [CATransaction commit];
+    [CATransaction commit];
 }
 
+- (IBAction)btnUseLessClick:(id)sender {
+    //显式事务无法在控件中应用
+    [CATransaction begin];
+    [CATransaction setValue:[NSNumber numberWithFloat:4.0f]
+                     forKey:kCATransactionAnimationDuration];//设定隐式事务处理时间
+    if (_swich.layer.position.x == 80) {
+          _swich.layer.position = CGPointMake(40,300);
+    }
+    else
+    {
+    _swich.layer.position = CGPointMake(80, 80);
+    }
+    [CATransaction commit];
+}
+- (void)setLayerBC
+{
+    CGColorRef redColor = [UIColor redColor].CGColor, blueColor = [UIColor blueColor].CGColor;
+    layer.backgroundColor = (layer.backgroundColor == redColor) ? blueColor : redColor;
+}
+- (void)setLayerOpcity
+{
+    layer.opacity = (layer.opacity == 1.0f) ? 0.5f : 1.0f;
+}
+- (void)setLayerBound
+{
+    if (layer.bounds.size.width == layer.bounds.size.height)
+    layer.bounds = CGRectMake(layer.bounds.origin.x, layer.bounds.origin.y, layer.bounds.size.width + 100, layer.bounds.size.height);
+    else
+        layer.bounds = CGRectMake(layer.bounds.origin.x, layer.bounds.origin.y, layer.bounds.size.width - 100, layer.bounds.size.height);
+}
 
+- (void)setLayerPosition
+{
+     layer.position = CGPointMake(layer.position.x +50, layer.position.y);
+}
 @end

@@ -18,6 +18,8 @@
 - (IBAction)btnpostionClick:(id)sender;
 - (IBAction)btnBoundClick:(id)sender;
 - (IBAction)btnOpacityClick:(id)sender;
+- (IBAction)btnMixClick:(id)sender;
+- (IBAction)btnUseLessClick:(id)sender;
 
 @property (retain, nonatomic) IBOutlet UISwitch *swich;
 
